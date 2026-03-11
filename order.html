@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMMERSE | Premium Cold-Pressed</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@300;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/orderstyle.css">
+</head>
+<body>
+
+    <div class="glow-container">
+        <div class="glow-circle glow-1"></div>
+        <div class="glow-circle glow-2"></div>
+        <div class="glow-circle glow-3"></div>
+        <div class="glow-circle glow-4"></div>
+
+    </div>
+
+    <nav class="glass-nav">
+        <div class="logo">IMMERSE</div>
+        <div class="nav-right" onclick="toggleCart()">
+            <span class="bag-label">YOUR COLLECTION</span>
+            <div class="cart-pill"><span id="cart-count">0</span></div>
+        </div>
+    </nav>
+
+    <div id="main-view">
+        <header class="premium-hero" id="menu">
+            <span class="hero-tag">ARTISANAL & ORGANIC</span>
+            <h1>Drink <span>Fresh</span> Feel <span>Fresh !</span></h1>
+            <p>A Pure collection of nature’s finest Fuit Juice, delivered in crystal glass.</p>
+        </header>
+        <main class="grid-container" id="juice-grid"></main>
+    </div>
+
+    <div id="cart-overlay" class="cart-overlay">
+        <div class="cart-panel">
+            <div class="cart-header">
+                <h2>Your Selection</h2>
+                <button class="close-btn" onclick="toggleCart()">✕</button>
+            </div>
+            <div id="cart-items" class="cart-body"></div>
+            <div class="cart-footer">
+                <div class="total-row">
+                    <span>Subtotal</span>
+                    <span id="total-price">₹0.00</span>
+                </div>
+                <button class="checkout-btn" onclick="openCheckout()">RESERVE NOW</button>
+            </div>
+        </div>
+    </div>
+
+    <section id="checkout-page" class="checkout-page" style="display: none;">
+        <div class="checkout-container">
+            <button class="back-link" onclick="closeCheckout()">← BACK TO COLLECTION</button>
+            <div class="checkout-split">
+                <div class="checkout-form-side">
+                    <h2>Shipping Details</h2>
+                    <form onsubmit="confirmFinalOrder(event)">
+                        <input type="text" placeholder="Full Name" required class="luxe-input">
+                        <input type="email" placeholder="Email Address" required class="luxe-input">
+                        <input type="text" placeholder="Delivery Address" required class="luxe-input">
+                        <h2 style="margin-top: 40px;">Payment</h2>
+                        <div class="payment-mock">
+                            <div style="letter-spacing: 4px; font-size: 1.1rem;">•••• •••• •••• ••••</div>
+                            <div style="display:flex; justify-content:space-between; margin-top:15px; font-size:0.8rem; opacity:0.6;">
+                                <span>EXP: MM/YY</span><span>CVC: •••</span>
+                            </div>
+                        </div>
+                        <button type="submit" id="pay-btn" class="final-pay-btn">COMPLETE PURCHASE</button>
+                    </form>
+                </div>
+                <div class="checkout-summary-side">
+                    <h3>Order Summary</h3>
+                    <div id="final-summary-items"></div>
+                    <div class="summary-total">
+                        <div class="line-item"><span>Subtotal</span><span id="sum-subtotal">$0.00</span></div>
+                        <div class="line-item"><span>Shipping</span><span>FREE</span></div>
+                        <div class="line-item total-bold"><span>Grand Total</span><span id="sum-total">$0.00</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="receipt-screen" class="receipt-screen" style="display: none;">
+        <div class="receipt-card">
+            <div class="success-icon">✓</div>
+            <h1>Merci.</h1>
+            <p class="receipt-sub">Your order has been placed successfully.</p>
+            <div class="receipt-details">
+                <div class="detail-row"><span>Order Number</span><span id="receipt-no">#VVT-0000</span></div>
+                <div class="detail-row"><span>Date</span><span id="receipt-date">--</span></div>
+            </div>
+            <div class="receipt-divider"></div>
+            <div id="receipt-items-list" class="receipt-items-list"></div>
+            <div class="receipt-divider"></div>
+            <div class="receipt-total-row">
+                <span>Total Amount Paid</span>
+                <strong id="receipt-total">$0.00</strong>
+            </div>
+            <div class="receipt-actions">
+                <button class="print-btn" onclick="window.print()">PRINT</button>
+                <button class="home-btn" onclick="returnToHome()">CONTINUE</button>
+            </div>
+        </div>
+    </section>
+    <!-- ABOUT SECTION -->
+<section class="about-section" id="About">
+    <h2>About Our Juice</h2>
+    <p>
+        Our juices are made from the freshest fruits picked directly from
+        trusted farms. We believe in natural taste, no preservatives,
+        and healthy refreshment in every sip.
+    </p>
+</section>
+
+
+<!-- HOW OUR JUICE IS MADE -->
+<section class="juice-process" id="Process">
+    <h2>How Our Juice Is Made</h2>
+
+    <div class="process-container">
+
+        <div class="process-card">
+            <h3>🍊 Fruit Selection</h3>
+            <p>Only fresh and organic fruits are carefully selected.</p>
+        </div>
+
+        <div class="process-card">
+            <h3>🥤 Cold Press</h3>
+            <p>Fruits are cold pressed to preserve vitamins and minerals.</p>
+        </div>
+
+        <div class="process-card">
+            <h3>✨ Fresh Bottling</h3>
+            <p>The juice is bottled hygienically and delivered fresh.</p>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- CONTACT SECTION -->
+<section class="contact-section" id="Contact">
+    <h2>Contact Us</h2>
+
+    <form class="contact-form" >
+        <input type="text" placeholder="Your Name">
+        <input type="email" placeholder="Your Email">
+        <textarea placeholder="Your Message"></textarea>
+        <button type="submit">Send Message</button>
+    </form>
+</section>
+    <section class="reviews-section">
+
+    <h2>What Our Customers Say</h2>
+
+    <div class="reviews-container">
+
+        <div class="review-card">
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+            <p>"The orange juice tastes incredibly fresh. It feels like drinking fruit straight from the farm!"</p>
+            <h4>- Rahul</h4>
+        </div>
+
+        <div class="review-card">
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+            <p>"Best juice I’ve ever tried. Natural taste and perfect sweetness."</p>
+            <h4>- Priya</h4>
+        </div>
+
+        <div class="review-card">
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+            <p>"Amazing quality and packaging. Definitely ordering again!"</p>
+            <h4>- Aman</h4>
+        </div>
+
+    </div>
+
+</section>
+
+
+<footer class="footer">
+    
+    <div class="footer-container">
+
+        <div class="footer-logo">
+            <h2>Fresh Juice</h2>
+            <p>Drink Fresh Feel Fresh 🍊</p>
+        </div>
+
+        <div class="footer-links">
+            <h3>Quick Links</h3>
+            <a href="#menu">Menu</a>
+            <a href="#About">About</a>
+            <a href="#Process">Process</a>
+            <a href="#Contact">Contact</a>
+        </div>
+
+        <div class="footer-social">
+            <h3>Follow Us</h3>
+            <div class="social-icons">
+                <a href="#">🌐</a>
+                <a href="#">📸</a>
+                <a href="#">🐦</a>
+                <a href="#">▶</a>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+        <p>© 2026 IMMERSE Juice | All Rights Reserved</p>
+    </div>
+
+</footer>
+
+    <script src="JAVASCRIPT/orderscript.js"></script>
+</body>
+</html>
